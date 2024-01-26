@@ -39,10 +39,14 @@ pipeline {
       steps{
         script {
           sh "cat manifests/deployment.yml"
-          sh "kubectl get pods"
+          sh "minikube start"
+          sh "sleep 60"
+          sh "kubectl cluster-info"
+          sh "sleep 10"
           sh "kubectl create -f manifests/deployment.yml"
           sh "kubectl create -f manifests/service.yml"
           sh "kubectl create -f manifests/configmap.yml"
+          sh "kubectl get pods"
           sh "minikube service nginx-service"
         }
       }
