@@ -35,14 +35,6 @@ pipeline {
         sh 'cat manifests/deployment.yml'
       }
     }
-     stage('Push updated manifest to bitbucket') {
-      steps {
-        withCredentials([gitUsernamePassword(credentialsId: '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', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])
-        {
-        sh 'git add manifests/deployment.yml && git commit -m "updated manifest after build" manifests/deployment.yml && git push origin main'
-      }
-     }
-    }
      stage('Deploy to K8s') {
       steps{
         script {
