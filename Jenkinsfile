@@ -37,8 +37,8 @@ pipeline {
     }
      stage('Push updated manifest to bitbucket') {
       steps {
-        sh 'git config --global user.email "talk2nasrin@gmail.com"
-        sh 'git config --global user.name "Noorunnsa"
+        sh 'git config --global user.email "talk2nasrin@gmail.com"'
+        sh 'git config --global user.name "Noorunnsa"'
         sh 'git add manifests/deployment.yml && git commit -m "updated manifest after build" manifests/deployment.yml && git push origin main'
       }
      }
