@@ -23,7 +23,7 @@ pipeline {
       }
       stage('Push Docker Image To Repo') {
       steps {
-          sh "docker login -u noorunnisa -p Noorunnisa@docker" 
+          sh "docker login -u noorunnisa -p Noorunnisa@docker"
           sh "docker push noorunnisa/jenkins-k8s-nginx:${BUILD_NUMBER}"
           sh "echo =============Successfully pushed docker image============"
           sh "docker logout"
@@ -37,15 +37,16 @@ pipeline {
     }
      stage('Push updated manifest to bitbucket') {
       steps {
-        sh 'git config --global user.email "talk2nasrin@gmail.com"'
-        sh 'git config --global user.name "Noorunnsa"'
-        sh 'git add manifests/deployment.yml && git commit -m "updated manifest after build" manifests/deployment.yml && git push origin HEAD:main'
+        withCredentials([gitUsernamePassword(credentialsId: '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', gitToolName: 'Default')])
+        {
+        sh 'git add manifests/deployment.yml && git commit -m "updated manifest after build" manifests/deployment.yml && git push origin main'
       }
      }
+    }
      stage('Deploy to K8s') {
       steps{
         script {
-          sh "cat manifests/deployment.ymml"
+          sh "cat manifests/deployment.yml"
           sh "kubectl get pods"
           sh "kubectl create -f manifests/deployment.yml"
           sh "kubectl create -f manifests/service.yml"
@@ -57,3 +58,4 @@ pipeline {
 
     }
 }
+
