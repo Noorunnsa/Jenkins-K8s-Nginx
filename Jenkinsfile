@@ -39,6 +39,7 @@ pipeline {
       steps{
         script {
           sh "cat manifests/deployment.yml"
+          sh "minikube delete --all"
           sh "./setup.sh"
           sh "kubectl cluster-info"
           sh "sleep 10"
