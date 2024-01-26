@@ -37,7 +37,7 @@ pipeline {
     }
      stage('Push updated manifest to bitbucket') {
       steps {
-        withCredentials([gitUsernamePassword(credentialsId: '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', gitToolName: 'Default')])
+        withCredentials([gitUsernamePassword(credentialsId: 'Token', gitToolName: 'Default')])
         {
         sh 'git add manifests/deployment.yml && git commit -m "updated manifest after build" manifests/deployment.yml && git push origin main'
       }
