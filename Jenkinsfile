@@ -46,6 +46,7 @@ pipeline {
           sh "kubectl create -f manifests/service.yml"
           sh "kubectl create -f manifests/configmap.yml"
           sh "kubectl get pods"
+          sh "sleep 60"
           sh "minikube service nginx-service"
         }
       }
