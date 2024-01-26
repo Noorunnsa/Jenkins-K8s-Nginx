@@ -39,7 +39,7 @@ pipeline {
       steps {
         sh 'git config --global user.email "talk2nasrin@gmail.com"'
         sh 'git config --global user.name "Noorunnsa"'
-        sh 'git add manifests/deployment.yml && git commit -m "updated manifest after build" manifests/deployment.yml && git push'
+        sh 'git add manifests/deployment.yml && git commit -m "updated manifest after build" manifests/deployment.yml && git push origin HEAD:main'
       }
      }
      stage('Deploy to K8s') {
