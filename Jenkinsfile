@@ -39,6 +39,7 @@ pipeline {
       steps{
         script {
           sh "cat manifests/deployment.yml"
+          sh "minikube status"
           sh "kubectl get pods"
           sh "kubectl create -f manifests/deployment.yml"
           sh "kubectl create -f manifests/service.yml"
