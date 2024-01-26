@@ -2,12 +2,12 @@
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 sudo dpkg -i minikube_latest_amd64.deb
 curl https://get.docker.com | bash
-sudo apt-get update
+
 sudo apt-get install -y apt-transport-https ca-certificates curl
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 sudo systemctl start docker
 sudo systemctl enable docker
-mkdir /etc/containerd
+sudo mkdir -p /etc/containerd
 sudo containerd config default > /etc/containerd/config.toml
 sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
 sudo systemctl start containerd
