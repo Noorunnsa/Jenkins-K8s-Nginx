@@ -17,8 +17,6 @@ data:
             root /usr/share/doc/nginx/html/; # Pay attention to this
 
             location / {
-                # Add your configuration for handling requests in this block
-                # For example, you might specify proxy_pass or serve static files
             }
         }
     }
