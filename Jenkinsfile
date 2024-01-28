@@ -11,7 +11,7 @@ pipeline {
              script {
                  def scannerHome = tool 'SonarQubeScanner'
                  withSonarQubeEnv('sonarqube') {
-                   sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Sonar_Jenkins -Dsonar.host.url=http://3.109.121.112:9000/ -Dsonar.login=sqp_2e4287ed45f2a666e84b2e7365d1ae932097b83c"
+                   sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Sonar_Jenkins -Dsonar.host.url=http://3.110.122.47:9000/ -Dsonar.login=sqp_9f184c9b6ac6e5e240ece3a186c091c5f8e56835"
                  }
                }
              }
