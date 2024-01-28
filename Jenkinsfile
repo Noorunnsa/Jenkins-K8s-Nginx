@@ -11,8 +11,9 @@ pipeline {
              script {
                  def scannerHome = tool 'SonarQubeScanner'
                  withSonarQubeEnv('sonarqube') {
-                   sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Sonar_Jenkins -Dsonar.host.url=http://3.109.121.112:9000/ -Dsonar.login=sqp_2e4287ed45f2a666e84b2e7365d1ae932097b83c                     }
+                   sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Sonar_Jenkins -Dsonar.host.url=http://3.109.121.112:9000/ -Dsonar.login=sqp_2e4287ed45f2a666e84b2e7365d1ae932097b83c"
                  }
+               }
              }
         }
      stage("Quality Gate") {
@@ -20,7 +21,7 @@ pipeline {
                timeout(time: 5, unit: 'MINUTES') {
                  waitForQualityGate abortPipeline: true
              }
-           }
+         }
      }
         stage('Build Docker Image') {
             steps {
