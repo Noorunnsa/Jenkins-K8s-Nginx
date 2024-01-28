@@ -14,7 +14,7 @@ data:
         server {
             listen 80;
 
-            root /usr/share/doc/nginx/html/; # Pay attention to this
+            root /usr/share/doc/nginx/html/; 
 
             location / {
             }
