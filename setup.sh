@@ -1,7 +1,7 @@
 #!/bin/bash
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 sudo dpkg -i minikube_latest_amd64.deb
-chmod +x minikube
+sudo chmod +x minikube
 sudo mkdir -p /usr/local/bin/
 sudo install minikube /usr/local/bin/
 sudo apt-get install -y kubelet kubeadm kubectl
