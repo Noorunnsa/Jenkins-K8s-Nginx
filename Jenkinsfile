@@ -40,7 +40,7 @@ pipeline {
       }
       stage('Push Docker Image To Repo') {
       steps {
-          sh "docker login -u noorunnisa -p Noorunnisa@docker"
+          sh "docker login -u noorunnisa -p *****"
           sh "docker push noorunnisa/jenkins-k8s-nginx:${BUILD_NUMBER}"
           sh "echo =============Successfully pushed docker image============"
           sh "docker logout"
